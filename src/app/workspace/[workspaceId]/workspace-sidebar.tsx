@@ -1,3 +1,5 @@
+//@typescript-eslint/no-unused-vars
+
 import { useCurrentMember } from '@/features/members/api/use-current-member';
 import { useGetMembers } from '@/features/members/api/use-get-members';
 import { UseGetWorkspace } from '@/features/workspaces/api/use-get-workspace';
