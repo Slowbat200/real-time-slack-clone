@@ -1,3 +1,5 @@
+//@typescript-eslint/no-unused-vars
+
 import { Id } from '../../../../convex/_generated/dataModel';
 
 import {
@@ -13,11 +15,8 @@ import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';

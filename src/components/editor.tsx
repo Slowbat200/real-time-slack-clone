@@ -1,3 +1,5 @@
+//@typescript-eslint/no-explicit-any
+
 /* The import statements at the beginning of the code are used to bring in various modules, components,
 and utilities that are needed in the `Editor` component. Here is a breakdown of what each import
 statement is doing: */
@@ -192,9 +194,18 @@ is setting the placeholder text for the Quill editor instance. The text of the p
             // Here I defining that if I click on the enter it will do nothing
             enter: {
               key: 'Enter',
-              handler:() => {
-                return false
-              }
+              handler: () => {
+                const text = quill.getText();
+                const addedImage = imageElementRef.current?.files?.[0] || null;
+
+                const isEmpty = !addedImage  && text.replace(/<(.|\n)*?>/g, '').trim().length === 0;
+
+                if(isEmpty) return
+
+                const body = JSON.stringify(quill.getContents())
+
+                submitRef.current?.({body, image: addedImage})
+              },
             },
             // But if I click on shift + enter it will create a new empty line (e.g. handler)
             shift_enter: {
@@ -281,10 +292,12 @@ content. */
     }
   };
 
-  const onEmojiSelect = (emoji: any) => {
+  const onEmojiSelect = (emoji: string) => {
     const quill = quilRef.current;
 
-    quill?.insertText(quill?.getSelection()?.index || 0, emoji.native);
+    if(!quill) return 
+
+    quill.insertText(quill.getSelection()?.index || 0, emoji);
   };
 
   /* The above code is checking if the `text` variable is empty after removing any HTML tags from it. It

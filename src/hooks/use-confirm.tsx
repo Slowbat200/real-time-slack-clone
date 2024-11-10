@@ -17,7 +17,7 @@ export const useConfirm = (title: string, message: string): [() => JSX.Element, 
   } | null>(null);
 
   const confirm = () =>
-    new Promise((resolve, reject) => {
+    new Promise((resolve) => {
       setPromise({ resolve });
     });
 

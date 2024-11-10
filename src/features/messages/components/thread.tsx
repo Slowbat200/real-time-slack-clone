@@ -87,7 +87,7 @@ export const Thread = ({ messageId, onClose }: ThreadProps) => {
       };
 
       if (image) {
-        const url = await generateUploadUrl({}, { throwError: true });
+        const url = await generateUploadUrl([], { throwError: true });
 
         if (!url) {
           throw new Error('Failed to generate upload url');
@@ -190,7 +190,7 @@ export const Thread = ({ messageId, onClose }: ThreadProps) => {
               {formatDateLabel(dateKey)}
             </span>
           </div>
-          {messages.map((message: any, index) => {
+          {messages.map((message, index) => {
             const prevMessage = messages[index - 1];
             const isCompact =
               prevMessage &&
