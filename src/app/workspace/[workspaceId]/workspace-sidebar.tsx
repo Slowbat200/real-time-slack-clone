@@ -30,7 +30,7 @@ export const WorkspaceSidebar = () => {
   const channelId = useChannelId();
   const workspaceId = useWorkspaceId();
 
-  const [_open, setOpen] = useCreateChannelModal();
+  const [, setOpen] = useCreateChannelModal();
 
   const { data: member, isLoading: memberLoading } = useCurrentMember({
     workspaceId,
@@ -90,7 +90,7 @@ export const WorkspaceSidebar = () => {
       <WorkspaceSection
         label='Direct messages'
         hint='New message'
-        onNew={() => {}}
+        onNew={member.role === 'admin' ? () => {} : undefined}
       >
         {members?.map((item) => (
           <UserItem

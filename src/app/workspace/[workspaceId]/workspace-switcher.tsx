@@ -24,9 +24,9 @@ export const WorkspaceSwitcher = () => {
   const router = useRouter();
   const workspaceId = useWorkspaceId();
 
-  const [_open, setOpen] = useCreateWorkspaceModal();
+  const [, setOpen] = useCreateWorkspaceModal();
 
-  const { data: workspaces, isLoading: _workspacesLoading } = useGetWorkspaces();
+  const { data: workspaces, isLoading: workspacesLoading } = useGetWorkspaces();
   const { data: workspace, isLoading: workspaceLoading } = UseGetWorkspace({
     id: workspaceId,
   });
@@ -39,7 +39,7 @@ export const WorkspaceSwitcher = () => {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Button className='size-9 relative overflow-hidden bg-[#abababab] hover:bg-[#abababab]/80 text-slate-800 fobt-semibold text-xl'>
-          {workspaceLoading ? (
+          {workspaceLoading || workspacesLoading ? (
             <Loader className='size-5 animate-spin shrink-0' />
           ) : (
             workspace?.name.charAt(0).toUpperCase()
