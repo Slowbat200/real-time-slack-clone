@@ -63,7 +63,7 @@ const WorkspaceLayout = ({ children }: WorkspaceLayoutProps) => {
                     <Profile memberId={profileMemberId as Id<'members'>} onClose={onClose}/>
                 ) : (
                   <div className='flex h-full items-center justify-center'>
-                    <Loader className='size-5 animate-spin text-muted-foreground' />
+                    er className='size-5 animate-spin text-muted-foreground' />
                   </div>
                 )}
               </ResizablePanel>
