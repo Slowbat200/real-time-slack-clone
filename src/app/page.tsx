@@ -22,7 +22,7 @@ export default function Home() {
     } else if (!open) {
       setOpen(true);
     }
-  }, [workspaceId, isLoading, setOpen, router]);
+  }, [workspaceId, isLoading, setOpen, router, open]);
   return (
     <div>
       <UserButton />
