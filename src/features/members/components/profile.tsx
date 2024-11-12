@@ -1,4 +1,3 @@
-//@typescript-eslint/no-unused-vars
 
 import { Id } from '../../../../convex/_generated/dataModel';
 
@@ -62,9 +61,9 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
   const { data: currentMember, isLoading: isLoadingCurrentMember } =
     useCurrentMember({ workspaceId });
 
-  const { mutate: updateMember, isPending: isUpdatingMember } =
+  const { mutate: updateMember, isPending: _isUpdatingMember } =
     useUpdateMember();
-  const { mutate: removeMember, isPending: isRemovingMember } =
+  const { mutate: removeMember, isPending: _isRemovingMember } =
     useRemoveMember();
 
   const onRemove = async () => {
